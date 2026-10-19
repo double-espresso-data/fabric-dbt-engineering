@@ -1,5 +1,36 @@
-
+# dbt build & compile artifacts
 target/
 dbt_packages/
+dbt_modules/
 logs/
+
+# Credentials & secrets (never commit profiles or environment files)
+profiles.yml
+profiles.yaml
 .env
+.env.*
+*.env
+
+# Python virtual environment & cache
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Export output directory (Part 1 script)
+exports/
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor configuration
+.vscode/
+.idea/
+*.swp
+*.swo
