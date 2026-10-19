@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key=['date_id', 'pickup_time_id', 'medallion_id', 'hackney_license_id']
+    )
+}}
+
 WITH trips AS (
     SELECT * 
     FROM {{ ref('stg_trips') }}
@@ -28,3 +35,8 @@ SELECT
     {{ to_dollars('tolls_amount') }} AS tolls_amount,
     {{ to_dollars('total_amount') }} AS total_amount
 FROM trips
+
+{% if is_incremental() %}
+    -- Fabric only queries records newer than what is already stored
+    WHERE date_id > (SELECT MAX(date_id) FROM {{ this }})
+{% endif %}
