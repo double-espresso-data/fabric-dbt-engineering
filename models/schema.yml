@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fct_daily_taxi_metrics
+    description: "Daily aggregated taxi trip metrics and revenues"
+    # unique: Verifies no duplicate IDs.
+    # not_null: Verifies no missing/blank values.
+    # accepted_values: Verifies values match a predefined list (e.g., status in ['Active', 'Pending']).
+    # relationships: Referential integrity (Foreign key exists in the parent table).
+    columns:
+      - name: date_id
+        description: "Primary key for daily metrics"
+        tests:
+          - unique
+          - not_null
+
+      - name: total_trips
+        description: "Count of trips on this day"
+        tests:
+          - not_null
+
+      - name: total_gross_revenue
+        description: "Gross revenue generated on this day"
+        tests:
+          - not_null
