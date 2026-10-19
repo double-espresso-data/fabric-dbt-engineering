@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: taxi_raw
+    database: enterprise-data-warehouse
+    schema: dbo
+    tables:
+      - name: Trip
+      - name: Geography
