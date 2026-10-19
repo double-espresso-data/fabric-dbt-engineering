@@ -1,0 +1,43 @@
+version: 2
+
+exposures:
+  - name: taxi_executive_overview
+    label: "NYC Taxi Executive Dashboard"
+    type: dashboard
+    maturity: high
+    url: https://app.powerbi.com/groups/me/reports/taxi_analytics
+    description: "Executive Power BI dashboard showing trips, revenue, driver tips, and weather correlations."
+    depends_on:
+      - ref('fct_trips')
+      - ref('dim_date')
+      - ref('dim_geography')
+    owner:
+      name: Analytics Engineering Team
+      email: data@company.com
+  
+  - name: executive_kpi_dashboard
+    type: dashboard
+    depends_on:
+      - ref('fct_trips')
+      - ref('dim_date')
+    owner:
+      name: Analytics Engineering Team
+      email: data@company.com
+  
+  - name: finance_revenue_reconciliation
+    type: dashboard
+    depends_on:
+      - ref('fct_trips')
+      - ref('dim_date')
+    owner:
+      name: Analytics Engineering Team
+      email: data@company.com
+
+  - name: operations_fleet_dispatch
+    type: dashboard
+    depends_on:
+      - ref('fct_trips')
+      - ref('dim_geography')
+    owner:
+      name: Analytics Engineering Team
+      email: data@company.com
