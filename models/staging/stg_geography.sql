@@ -1,7 +1,13 @@
-{{ config(materialized='ephemeral') }}
+WITH source_data AS (
+    SELECT * 
+    FROM {{ source('fabric_raw', 'Geography') }}
+)
 
 SELECT
     GeographyID AS geography_id,
+    ZipCode AS zip_code,
     City AS city,
-    State AS state_code
-FROM {{ source('taxi_raw', 'Geography') }}
+    County AS county,
+    State AS state_code,
+    Country AS country
+FROM source_data

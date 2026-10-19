@@ -1,9 +1,11 @@
 version: 2
 
 sources:
-  - name: taxi_raw
-    database: enterprise-data-warehouse
+  - name: fabric_raw
+    database: dbt_learning_wh
     schema: dbo
     tables:
       - name: Trip
+      - name: Weather
       - name: Geography
+      - name: Date
